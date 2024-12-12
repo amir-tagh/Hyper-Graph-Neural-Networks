@@ -1,6 +1,6 @@
 # Hyper-Graph-Neural-Networks
-Implementing a Geometric Graph Neural Networks for a small molecule classifier
-This script implements a pipeline for training a Hypergraph Neural Network (HGNN) on molecular data represented as SMILES strings. Here's a summary of what the script does:
+#Implementing a Geometric Graph Neural Networks for a small molecule classifier
+#This script implements a pipeline for training a Hypergraph Neural Network (HGNN) on molecular data represented as SMILES strings. Here's a summary of what the script does:
 
 Features:
 SMILES to Hypergraph Conversion:
