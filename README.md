@@ -33,3 +33,28 @@ SMILES to Hypergraph Conversion:
 
 Accepts a CSV file with two columns: smiles (SMILES strings) and label (classification labels).
 Allows setting the number of trials for Optuna.
+# To test a set of SMILES with a trained model and predict the probability of each SMILES being a binder or non-binder, you can follow these steps:
+# Steps to Test SMILES and Predict Probabilities
+1. Prepare the Input SMILES: Ensure the test SMILES strings are in a CSV file, and each SMILES is processed into a hypergraph format using the smiles_to_hypergraph function.
+
+2. Load the Trained Model: Use the load_model function to load the best-trained model from the saved file.
+
+3. Create a DataLoader: Convert the test SMILES into hypergraph Data objects and create a DataLoader for batch processing.
+
+4. Predict Probabilities: Use the trained model in evaluation mode (model.eval()) to compute probabilities using torch.nn.functional.softmax.
+
+5. Output Predictions: Save the predictions (probabilities) for each SMILES into a CSV file.
+# Explanation
+1. Input File: The --input argument should point to a CSV file containing a column named smiles with the test SMILES strings.
+
+2. Model File: Use the --model argument to specify the path to the saved trained model file (e.g., best_model.pth).
+
+3. Output File: The --output argument specifies the CSV file to save the predicted probabilities.
+
+4. Label Probabilities: The output CSV will contain:
+
+4.1 Column SMILES: The input SMILES.
+4.2 Column Non-binder Probability: Probability of the SMILES being a non-binder.
+4.3 Column Binder Probability: Probability of the SMILES being a binder.
+4.4 Softmax for Probabilities: The F.softmax function converts the model's logits into probabilities for each class.
+
