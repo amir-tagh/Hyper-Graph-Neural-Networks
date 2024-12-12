@@ -15,7 +15,43 @@ SMILES to Hypergraph Conversion:
 1. A PyTorch Geometric-based implementation of Hypergraph Neural Networks.
 2. Includes a configurable number of HypergraphConv layers.
 3. Graph-level pooling is performed using mean aggregation.
-4. Hyperparameter Optimization with Optuna:
+4. Hyperparameter Optimization with Optuna.
+
+# Hybridization
+Hybridization describes the mixing of atomic orbitals (like s, p, and d) to form hybrid orbitals in covalent bonding. Common hybridizations include sp, sp2, sp3.Each atom (node) in the molecular graph is represented by these features:
+
+Atomic Number: Identifies the element (e.g., 6 for carbon, 7 for nitrogen).
+Degree: The number of bonds connected to the atom.
+Hybridization: Specifies the orbital hybridization.
+Formal Charge: Indicates the net charge of the atom.
+Aromaticity: Boolean indicating if the atom is part of an aromatic system.
+
+RDKit API: atom.GetHybridization()
+RDKit uses the molecular graph and bonding information from the SMILES input to assign hybridization states to atoms.
+Example:
+C in methane (CH4): sp3
+C in ethene (C=C): sp2
+C in ethyne (C#C): sp
+
+This method converts the hybridization state (an RDKit enum) into an integer representation. The hybridization states are:
+
+0: Unspecified
+1: sp
+2: sp2
+3: sp3
+4: sp3d
+5: sp3d2
+
+# How These Features Are Used
+In the smiles_to_hypergraph function, these atomic properties are collected as part of the node features for the hypergraph:
+Each atom (node) in the molecular graph is represented by these features:
+
+Atomic Number: Identifies the element (e.g., 6 for carbon, 7 for nitrogen).
+Degree: The number of bonds connected to the atom.
+Hybridization: Specifies the orbital hybridization.
+Formal Charge: Indicates the net charge of the atom.
+Aromaticity: Boolean indicating if the atom is part of an aromatic system.
+
 
 # Optimizes:
 1. hidden_dim: Hidden layer size.
