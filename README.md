@@ -44,7 +44,16 @@ Allows setting the number of trials for Optuna.
 4. Predict Probabilities: Use the trained model in evaluation mode (model.eval()) to compute probabilities using torch.nn.functional.softmax.
 
 5. Output Predictions: Save the predictions (probabilities) for each SMILES into a CSV file.
-# Explanation
+
+# Changes:
+1. K-Fold Cross-Validation:
+
+1.1 Added KFold from sklearn.model_selection for splitting data into folds.
+Calculates the accuracy for each fold and computes the average accuracy.
+Loss Curve Plotting:
+
+2. Plots training and validation loss curves for each fold.
+# Explanation (Test SMILES)
 1. Input File: The --input argument should point to a CSV file containing a column named smiles with the test SMILES strings.
 
 2. Model File: Use the --model argument to specify the path to the saved trained model file (e.g., best_model.pth).
